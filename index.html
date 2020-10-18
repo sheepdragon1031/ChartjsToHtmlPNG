@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>chart</title>
+    <meta charset="utf-8" />
+    <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <canvas id="myChart"></canvas>
+    <script>
+        var config = {
+			type: 'doughnut',
+			data: {
+				datasets: [{
+					data: {{chartData}},
+					backgroundColor: [
+                        "rgb(255, 99, 132)",
+                        "rgb(255, 159, 64)",
+                        "rgb(255, 205, 86)",
+                        "rgb(75, 192, 192)",
+                        "rgb(54, 162, 235)",
+                        "rgb(153, 102, 255)",
+                        "rgb(201, 203, 207)",
+                        "rgb(240, 243, 247)"
+					],
+					label: 'Dataset 1'
+				}],
+				labels: ["ANGRY", "HAPPY", "SAD", "AFRAID", "DISGUST", "SUPRISE", "NERVOUS", "ADMIRATION"],
+			},
+			options: {
+				responsive: true,
+				legend: {
+					position: 'top',
+				},
+				title: {
+					display: true,
+					text: '情緒分析'
+				},
+				animation: {
+					animateScale: false,
+					animateRotate: false
+				}
+			}
+		};
+        
+
+        var ctx = document.getElementById("myChart").getContext("2d");
+        var myNewChart = new Chart(ctx, config);
+        var base64 = document.getElementById("myChart").toDataURL("img/png");
+    </script>
+</body>
+</html>
